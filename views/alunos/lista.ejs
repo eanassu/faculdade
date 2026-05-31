@@ -1,0 +1,41 @@
+<%- include('../partials/header') %>
+
+<%
+  function formatDate(dateStr) {
+    if (!dateStr) return '';
+    const date = new Date(dateStr);
+    if (isNaN(date)) return dateStr;
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
+%>
+
+<h1>Lista de Alunos</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>RA</th>
+      <th>Nome</th>
+      <th>data de nascimento</th>
+      <th>email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% alunos.forEach(aluno => { %>
+      <tr>
+        <td><%= aluno.ra %></td>
+        <td><%= aluno.nome %></td>
+        <td><%= formatDate(aluno.dataNascimento) %></td>
+        <td><%= aluno.email %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<a href="/alunos" class="btn btn-secondary">Voltar</a>
+
+
+<%- include('../partials/footer') %>

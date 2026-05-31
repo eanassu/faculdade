@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+
+<h1>Novo Aluno</h1>
+<form action="/alunos/new" method="POST">
+  <div class="mb-3">
+    <label>RA:</label>
+    <input type="text" name="ra" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label>nome:</label>
+    <input type="text" name="nome" class="form-control" required>
+  </div>
+    <div class="mb-3">
+    <label>data de nascimento:</label>
+    <input type="text" name="dataNascimento" class="form-control" required>
+  </div>
+    <div class="mb-3">
+    <label>email:</label>
+    <input type="text" name="email" class="form-control" required>
+  </div>
+  <button type="submit" class="btn btn-success">Salvar</button>
+  <a href="/alunos" class="btn btn-secondary">Cancelar</a>
+</form>
+
+<%- include('../partials/footer') %>
