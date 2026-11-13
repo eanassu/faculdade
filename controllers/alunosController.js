@@ -13,15 +13,14 @@ exports.excluir = (req, res) => {
   res.render('alunos/delete');
 }
 
-exports.listarAlunos = (req, res) => {
-  Aluno.selectAll((err, results) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send('Erro ao buscar alunos');
-    } else {
-      res.render('alunos/lista', { alunos: results });
-    }
-  });
+exports.listarAlunos = async (req, res) => {
+  try {
+    const alunos = await Aluno.selectAll(); 
+    res.render('alunos/lista', { alunos });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Erro ao listar alunos');
+  }
 }
 
 exports.new = (req, res) => {
@@ -59,7 +58,10 @@ exports.updateForm = (req, res) => {
 exports.update = (req, res) => {
   req.body.dataNascimento = datas.formatDateToMySQL(req.body.dataNascimento);
   const { ra } = req.params;
-  Aluno.update(ra, req.body, (err, result) => {
+  console.log(ra);
+  const {nome, dataNascimento, email} = req.body;
+  console.log(req.body);
+  Aluno.update(ra, {nome, dataNascimento, email}, (err, result) => {
     if (err) {
       console.error(err);
       res.status(500).send('Erro ao atualizar aluno');

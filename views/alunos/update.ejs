@@ -4,6 +4,7 @@
 <form action="/alunos/update" method="POST">
   <div class="mb-3">
     <label>alterando RA <%= aluno.ra %></label>
+        <input type="text" name="ra" class="form-control" value="<%= aluno.ra %>" hidden>
   </div>
   <div class="mb-3">
     <label>nome:</label>
