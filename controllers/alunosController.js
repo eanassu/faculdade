@@ -57,6 +57,7 @@ exports.updateForm = async (req, res) => {
 exports.update = async (req, res) => {
   req.body.dataNascimento = datas.formatDateToMySQL(req.body.dataNascimento);
   const { ra } = req.params;
+  console.log(req.params);
   console.log(ra);
   const {nome, dataNascimento, email} = req.body;
   console.log(req.body);

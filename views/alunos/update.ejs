@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 
 <h1>Atualizar Aluno</h1>
-<form action="/alunos/update" method="POST">
+<form action="/alunos/<%= aluno.ra %>?_method=PUT" method="POST">
   <div class="mb-3">
     <label>alterando RA <%= aluno.ra %></label>
         <input type="text" name="ra" class="form-control" value="<%= aluno.ra %>" hidden>
