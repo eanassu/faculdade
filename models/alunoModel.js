@@ -7,9 +7,9 @@ const Aluno = {
     return rows;
   },
   
-  async selectByRa() {
+  async selectByRa(ra) {
     const [rows] = await db.query('SELECT ra,nome,dataNascimento,email FROM ALUNOS WHERE ra = ?', [ra]);
-    return rows;
+    return rows[0] || null;
   },
 
   async insert(data) { 
